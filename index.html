@@ -111,6 +111,21 @@
     filter: drop-shadow(0 0 20px rgba(100,255,218,0.3));
   }
 
+  /* Make body parts clickable */
+  .body-part {
+    cursor: pointer;
+    transition: opacity 0.2s, filter 0.2s;
+  }
+
+  .body-part:hover {
+    opacity: 0.8;
+    filter: brightness(1.2);
+  }
+
+  .body-part.active {
+    filter: brightness(1.5) drop-shadow(0 0 8px currentColor);
+  }
+
   /* nerve pulse animation */
   .nerve-line {
     stroke-dasharray: 6 4;
@@ -258,7 +273,7 @@
 <body>
 <div class="container">
   <h1>Jouw Zintuigen ✨</h1>
-  <p class="subtitle">Klik op een zintuig om meer te leren! • Voor kinderen van 10+</p>
+  <p class="subtitle">Klik op een zintuig OF een lichaamsdeel om meer te leren! • Voor kinderen van 10+</p>
 
   <div class="layout">
     <!-- LEFT: Classic senses -->
@@ -337,73 +352,96 @@
         </defs>
 
         <!-- HEAD -->
-        <ellipse cx="80" cy="38" rx="30" ry="35" fill="#1e3a5f" stroke="#64ffda" stroke-width="1.5"/>
-        <!-- Brain glow -->
-        <ellipse cx="80" cy="28" rx="20" ry="18" fill="url(#brainGlow)" opacity="0.7"/>
-        <!-- Eyes -->
-        <circle cx="68" cy="32" r="5" fill="#112240" stroke="#64ffda" stroke-width="1"/>
-        <circle cx="92" cy="32" r="5" fill="#112240" stroke="#64ffda" stroke-width="1"/>
-        <circle cx="69" cy="32" r="2" fill="#64ffda"/>
-        <circle cx="93" cy="32" r="2" fill="#64ffda"/>
-        <!-- Nose -->
-        <path d="M80 36 L76 44 Q80 46 84 44 Z" fill="#1e3a5f" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
-        <!-- Mouth -->
-        <path d="M72 50 Q80 56 88 50" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <!-- Ear left -->
-        <ellipse cx="50" cy="38" rx="5" ry="8" fill="#1e3a5f" stroke="#64ffda" stroke-width="1"/>
-        <!-- Ear right -->
-        <ellipse cx="110" cy="38" rx="5" ry="8" fill="#1e3a5f" stroke="#64ffda" stroke-width="1"/>
+        <g class="body-part" data-body-part="head">
+          <ellipse cx="80" cy="38" rx="30" ry="35" fill="#1e3a5f" stroke="#64ffda" stroke-width="1.5"/>
+          <!-- Brain glow -->
+          <ellipse cx="80" cy="28" rx="20" ry="18" fill="url(#brainGlow)" opacity="0.7"/>
+          <!-- Eyes -->
+          <circle cx="68" cy="32" r="5" fill="#112240" stroke="#64ffda" stroke-width="1"/>
+          <circle cx="92" cy="32" r="5" fill="#112240" stroke="#64ffda" stroke-width="1"/>
+          <circle cx="69" cy="32" r="2" fill="#64ffda"/>
+          <circle cx="93" cy="32" r="2" fill="#64ffda"/>
+          <!-- Nose -->
+          <path d="M80 36 L76 44 Q80 46 84 44 Z" fill="#1e3a5f" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
+          <!-- Mouth -->
+          <path d="M72 50 Q80 56 88 50" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <!-- Ear left -->
+          <ellipse cx="50" cy="38" rx="5" ry="8" fill="#1e3a5f" stroke="#64ffda" stroke-width="1"/>
+          <!-- Ear right -->
+          <ellipse cx="110" cy="38" rx="5" ry="8" fill="#1e3a5f" stroke="#64ffda" stroke-width="1"/>
+          <!-- Brain label -->
+          <text x="80" y="16" text-anchor="middle" font-size="7" fill="#a29bfe" font-family="Nunito" font-weight="700">HERSENEN</text>
+        </g>
 
         <!-- NECK -->
-        <rect x="72" y="72" width="16" height="18" rx="4" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <g class="body-part" data-body-part="neck">
+          <rect x="72" y="72" width="16" height="18" rx="4" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        </g>
 
         <!-- TORSO -->
-        <rect x="45" y="88" width="70" height="100" rx="18" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
-        <!-- Heart area -->
-        <circle cx="72" cy="115" r="8" fill="rgba(255,107,157,0.15)" stroke="#ff6b9d" stroke-width="1"/>
-        <text x="72" y="119" text-anchor="middle" font-size="10">♥</text>
-        <!-- Stomach -->
-        <ellipse cx="85" cy="145" rx="12" ry="10" fill="rgba(247,183,49,0.08)" stroke="rgba(247,183,49,0.3)" stroke-width="1"/>
+        <g class="body-part" data-body-part="torso">
+          <rect x="45" y="88" width="70" height="100" rx="18" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <!-- Heart area -->
+          <circle cx="72" cy="115" r="8" fill="rgba(255,107,157,0.15)" stroke="#ff6b9d" stroke-width="1"/>
+          <text x="72" y="119" text-anchor="middle" font-size="10">♥</text>
+          <!-- Stomach -->
+          <ellipse cx="85" cy="145" rx="12" ry="10" fill="rgba(247,183,49,0.08)" stroke="rgba(247,183,49,0.3)" stroke-width="1"/>
+        </g>
 
         <!-- SPINE / Ruggenmerg -->
-        <line x1="80" y1="72" x2="80" y2="188" stroke="#a29bfe" stroke-width="2.5" stroke-linecap="round" class="nerve-line"/>
+        <g class="body-part" data-body-part="spine">
+          <line x1="80" y1="72" x2="80" y2="188" stroke="#a29bfe" stroke-width="2.5" stroke-linecap="round" class="nerve-line"/>
+          <!-- Spine label -->
+          <text x="92" y="140" font-size="6" fill="#a29bfe" font-family="Nunito" font-weight="700">ruggen-</text>
+          <text x="92" y="148" font-size="6" fill="#a29bfe" font-family="Nunito" font-weight="700">merg</text>
+        </g>
 
         <!-- LEFT ARM -->
-        <path d="M45 95 Q20 120 18 165 Q18 180 26 182" stroke="rgba(255,255,255,0.15)" stroke-width="12" stroke-linecap="round" fill="none"/>
-        <path d="M45 95 Q20 120 18 165 Q18 180 26 182" stroke="#1e3a5f" stroke-width="10" stroke-linecap="round" fill="none"/>
-        <!-- LEFT HAND -->
-        <ellipse cx="28" cy="186" rx="10" ry="8" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <g class="body-part" data-body-part="left-arm">
+          <path d="M45 95 Q20 120 18 165 Q18 180 26 182" stroke="rgba(255,255,255,0.15)" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <path d="M45 95 Q20 120 18 165 Q18 180 26 182" stroke="#1e3a5f" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <!-- LEFT HAND -->
+          <ellipse cx="28" cy="186" rx="10" ry="8" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <!-- Nerve in arm -->
+          <path d="M72 120 Q35 135 28 180" stroke="#64ffda" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" class="nerve-line"/>
+        </g>
 
         <!-- RIGHT ARM -->
-        <path d="M115 95 Q140 120 142 165 Q142 180 134 182" stroke="rgba(255,255,255,0.15)" stroke-width="12" stroke-linecap="round" fill="none"/>
-        <path d="M115 95 Q140 120 142 165 Q142 180 134 182" stroke="#1e3a5f" stroke-width="10" stroke-linecap="round" fill="none"/>
-        <!-- RIGHT HAND -->
-        <ellipse cx="132" cy="186" rx="10" ry="8" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-
-        <!-- Nerve in arms -->
-        <path d="M72 120 Q35 135 28 180" stroke="#64ffda" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" class="nerve-line"/>
-        <path d="M88 120 Q125 135 132 180" stroke="#64ffda" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" class="nerve-line"/>
+        <g class="body-part" data-body-part="right-arm">
+          <path d="M115 95 Q140 120 142 165 Q142 180 134 182" stroke="rgba(255,255,255,0.15)" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <path d="M115 95 Q140 120 142 165 Q142 180 134 182" stroke="#1e3a5f" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <!-- RIGHT HAND -->
+          <ellipse cx="132" cy="186" rx="10" ry="8" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <!-- Nerve in arm -->
+          <path d="M88 120 Q125 135 132 180" stroke="#64ffda" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" class="nerve-line"/>
+        </g>
 
         <!-- HIPS -->
-        <rect x="42" y="186" width="76" height="28" rx="12" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        <g class="body-part" data-body-part="hips">
+          <rect x="42" y="186" width="76" height="28" rx="12" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        </g>
 
         <!-- LEFT LEG -->
-        <path d="M62 214 Q55 270 54 320" stroke="rgba(255,255,255,0.15)" stroke-width="14" stroke-linecap="round" fill="none"/>
-        <path d="M62 214 Q55 270 54 320" stroke="#1e3a5f" stroke-width="12" stroke-linecap="round" fill="none"/>
-        <!-- Left foot -->
-        <ellipse cx="56" cy="325" rx="12" ry="8" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-        <ellipse cx="66" cy="328" rx="6" ry="5" fill="#1e3a5f" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <g class="body-part" data-body-part="left-leg">
+          <path d="M62 214 Q55 270 54 320" stroke="rgba(255,255,255,0.15)" stroke-width="14" stroke-linecap="round" fill="none"/>
+          <path d="M62 214 Q55 270 54 320" stroke="#1e3a5f" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <!-- Left foot -->
+          <ellipse cx="56" cy="325" rx="12" ry="8" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <ellipse cx="66" cy="328" rx="6" ry="5" fill="#1e3a5f" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <!-- Nerve in leg -->
+          <path d="M76 188 Q65 250 56 320" stroke="#f7b731" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" class="nerve-line"/>
+        </g>
 
         <!-- RIGHT LEG -->
-        <path d="M98 214 Q105 270 106 320" stroke="rgba(255,255,255,0.15)" stroke-width="14" stroke-linecap="round" fill="none"/>
-        <path d="M98 214 Q105 270 106 320" stroke="#1e3a5f" stroke-width="12" stroke-linecap="round" fill="none"/>
-        <!-- Right foot -->
-        <ellipse cx="104" cy="325" rx="12" ry="8" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-        <ellipse cx="94" cy="328" rx="6" ry="5" fill="#1e3a5f" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-
-        <!-- Nerve in legs -->
-        <path d="M76 188 Q65 250 56 320" stroke="#f7b731" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" class="nerve-line"/>
-        <path d="M84 188 Q95 250 104 320" stroke="#f7b731" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" class="nerve-line"/>
+        <g class="body-part" data-body-part="right-leg">
+          <path d="M98 214 Q105 270 106 320" stroke="rgba(255,255,255,0.15)" stroke-width="14" stroke-linecap="round" fill="none"/>
+          <path d="M98 214 Q105 270 106 320" stroke="#1e3a5f" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <!-- Right foot -->
+          <ellipse cx="104" cy="325" rx="12" ry="8" fill="#1e3a5f" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <ellipse cx="94" cy="328" rx="6" ry="5" fill="#1e3a5f" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <!-- Nerve in leg -->
+          <path d="M84 188 Q95 250 104 320" stroke="#f7b731" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" class="nerve-line"/>
+        </g>
 
         <!-- Muscle dots in legs/arms (proprioception) -->
         <circle cx="50" cy="145" r="3" fill="#f7b731" opacity="0.6"/>
@@ -412,17 +450,10 @@
         <circle cx="145" cy="155" r="2.5" fill="#f7b731" opacity="0.5"/>
         <circle cx="58" cy="265" r="3" fill="#f7b731" opacity="0.6"/>
         <circle cx="102" cy="265" r="3" fill="#f7b731" opacity="0.6"/>
-
-        <!-- Brain label -->
-        <text x="80" y="16" text-anchor="middle" font-size="7" fill="#a29bfe" font-family="Nunito" font-weight="700">HERSENEN</text>
-
-        <!-- Spine label -->
-        <text x="92" y="140" font-size="6" fill="#a29bfe" font-family="Nunito" font-weight="700">ruggen-</text>
-        <text x="92" y="148" font-size="6" fill="#a29bfe" font-family="Nunito" font-weight="700">merg</text>
       </svg>
 
       <div class="info-box" id="info-box">
-        👆 Klik op een zintuig om te zien waar in je lichaam de prikkels beginnen!
+        👆 Klik op een zintuig of lichaamsdeel om meer te weten!
       </div>
     </div>
 
@@ -492,8 +523,10 @@
 
 <script>
   const cards = document.querySelectorAll('.sense-card');
+  const bodyParts = document.querySelectorAll('.body-part');
   const infoBox = document.getElementById('info-box');
 
+  // Descriptions for sense cards
   const descriptions = {
     zien: '👁️ <strong>Zien</strong>: Licht → ogen → oogzenuw → achterkant van je hersenen (visuele cortex)',
     horen: '👂 <strong>Horen</strong>: Geluid → oor → gehoorzenuw → zijkant hersenen',
@@ -507,20 +540,55 @@
     intero: '🫀 <strong>Interoceptie</strong>: Organen (hart, maag, darmen) → nervus vagus → hersenstam → hersenen'
   };
 
+  // Descriptions for body parts
+  const bodyPartDescriptions = {
+    head: '🧠 <strong>Hoofd & Hersenen</strong>: Je hersenen verwerken alles! De zintuigen sturen informatie hierheen. Zie, hoor, ruik, voel en proef - het gebeurt allemaal hier!',
+    neck: '🔗 <strong>Nek</strong>: De nek is de doorgangsplek! Alle signalen van je lichaam reizen via het ruggenmerg omhoog naar je hersenen.',
+    torso: '❤️ <strong>Torso (Buik & Borst)</strong>: Hier zitten je hart (voelt je hartslag), maag en darmen (voelen honger & dorst). Dit is interoceptie!',
+    spine: '⚡ <strong>Ruggenmerg</strong>: De "informatieautobahn" van je lichaam! Alle zintuwaarvnemingen gaan hierdoor omhoog naar je hersenen.',
+    'left-arm': '💪 <strong>Linkerarm & Hand</strong>: Vol met sensors! Voelen warmte, kou, druk, pijn. Je weet precies waar je arm is (proprioceptie).',
+    'right-arm': '💪 <strong>Rechterarm & Hand</strong>: Vol met sensors! Voelen warmte, kou, druk, pijn. Je weet precies waar je arm is (proprioceptie).',
+    hips: '🦵 <strong>Heupen</strong>: Voelen druk en positie. Belangrijk voor evenwicht en houding!',
+    'left-leg': '🦵 <strong>Linkerbeen & Voet</strong>: Voelen druk, pijn, warmte. Je proprioceptie zegt waar je voet is, zelfs in het donker!',
+    'right-leg': '🦵 <strong>Rechterbeen & Voet</strong>: Voelen druk, pijn, warmte. Je proprioceptie zegt waar je voet is, zelfs in het donker!'
+  };
+
+  // Handle sense card clicks
   cards.forEach(card => {
     card.addEventListener('click', () => {
       const isActive = card.classList.contains('active');
       cards.forEach(c => c.classList.remove('active'));
+      bodyParts.forEach(part => part.classList.remove('active'));
+      
       if (!isActive) {
         card.classList.add('active');
         infoBox.innerHTML = descriptions[card.dataset.id] || '';
       } else {
-        infoBox.innerHTML = '👆 Klik op een zintuig om te zien waar in je lichaam de prikkels beginnen!';
+        infoBox.innerHTML = '👆 Klik op een zintuig of lichaamsdeel om meer te weten!';
       }
     });
   });
 
-  // staggered animation
+  // Handle body part clicks
+  bodyParts.forEach(part => {
+    part.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const partId = part.dataset.bodyPart;
+      const isActive = part.classList.contains('active');
+      
+      bodyParts.forEach(p => p.classList.remove('active'));
+      cards.forEach(c => c.classList.remove('active'));
+      
+      if (!isActive) {
+        part.classList.add('active');
+        infoBox.innerHTML = bodyPartDescriptions[partId] || '';
+      } else {
+        infoBox.innerHTML = '👆 Klik op een zintuig of lichaamsdeel om meer te weten!';
+      }
+    });
+  });
+
+  // Staggered animation for cards
   cards.forEach((card, i) => {
     card.style.animationDelay = `${0.1 + i * 0.08}s`;
   });
